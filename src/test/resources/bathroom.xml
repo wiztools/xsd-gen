@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<wiz:bathroomAmenities xmlns:wiz="http://www.wiztools.org/wiz">
+  <wiz:amenity>Bathrobe</wiz:amenity>
+  <wiz:amenity>Vanity mirror</wiz:amenity>
+  <wiz:amenity>Bath cap</wiz:amenity>
+  <wiz:amenity>Hair dryer</wiz:amenity>
+  <wiz:amenity>Slippers</wiz:amenity>
+  <wiz:amenity>Bathtub seat</wiz:amenity>
+</wiz:bathroomAmenities>

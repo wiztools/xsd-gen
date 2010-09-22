@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<wiz:tv xmlns:wiz="http://www.wiztools.org/wiz">
+    <wiz:size>123</wiz:size>
+    <wiz:technology>LCD</wiz:technology>
+    <wiz:channelLineup>http://url/</wiz:channelLineup>
+    <wiz:source>Cable</wiz:source>
+    <wiz:dvd>true</wiz:dvd>
+    <wiz:tvControlRemote>true</wiz:tvControlRemote>
+    <wiz:payPerView>true</wiz:payPerView>
+</wiz:tv>
