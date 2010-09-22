@@ -43,10 +43,15 @@ final class XsdUtil {
                 recurseGen(e, element);
             }
             else {
+                final String cnt = e.getValue();
+                final String eValue = cnt==null? null: cnt.trim();
+
+                final String type = TypeInferenceUtil.getTypeOfContent(eValue);
+
                 if(!elementNamesProcessed.contains(nsName)) { // process an element first time only
                     Element element = new Element("xsd:element", XSD_NS_URI);
                     element.addAttribute(new Attribute("name", localName));
-                    element.addAttribute(new Attribute("type", "xsd:string"));
+                    element.addAttribute(new Attribute("type", type));
                     if(parent.getChildElements(localName, nsURI).size() > 1){
                         element.addAttribute(new Attribute("maxOccurs", "unbounded"));
                     }
