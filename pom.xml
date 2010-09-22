@@ -7,7 +7,7 @@
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>xsd-gen</name>
-    <url>http://maven.apache.org</url>
+    <url>http://wiztools.org</url>
     <build>
         <plugins>
             <plugin>
