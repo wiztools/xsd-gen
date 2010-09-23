@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wiz:root xmlns:wiz="http://wiztools.org">
+    <wiz:child name="Aarthi" last-name="Rajan">
+        Text content
+    </wiz:child>
+</wiz:root>

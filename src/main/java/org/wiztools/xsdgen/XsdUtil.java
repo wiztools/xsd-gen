@@ -21,11 +21,33 @@ final class XsdUtil {
 
     private static final String XSD_NS_URI = "http://www.w3.org/2001/XMLSchema";
 
+    private static void processAttributes(final Element inElement, final Element outElement) {
+        for(int i=0; i<inElement.getAttributeCount(); i++) {
+            final Attribute attr = inElement.getAttribute(i);
+
+            final String name = attr.getLocalName();
+
+            final String nsPrefix = attr.getNamespacePrefix();
+            final String nsURI = attr.getNamespaceURI();
+            final String nsName = (nsPrefix==null? "": nsPrefix + ":") + name;
+            
+            final String value = attr.getValue();
+
+            Element attrElement = new Element("xsd:attribute", XSD_NS_URI);
+            attrElement.addAttribute(new Attribute("name", name));
+            attrElement.addAttribute(new Attribute("type", TypeInferenceUtil.getTypeOfContent(value)));
+            attrElement.addAttribute(new Attribute("use", "required"));
+
+            outElement.appendChild(attrElement);
+        }
+    }
+
     private static void recurseGen(Element parent, Element parentOutElement) {
         // Adding complexType element:
         Element complexType = new Element("xsd:complexType", XSD_NS_URI);
         Element sequence = new Element("xsd:sequence", XSD_NS_URI);
         complexType.appendChild(sequence);
+        processAttributes(parent, complexType);
         parentOutElement.appendChild(complexType);
 
         Elements childs = parent.getChildElements();
@@ -37,10 +59,11 @@ final class XsdUtil {
             final String nsPrefix = e.getNamespacePrefix();
             final String nsName = (nsPrefix!=null?nsPrefix + ":": "") + localName;
 
-            if(e.getChildElements().size() > 0) {
+            if(e.getChildElements().size() > 0) { // Is complex type with children!
                 Element element = new Element("xsd:element", XSD_NS_URI);
                 element.addAttribute(new Attribute("name", localName));
                 recurseGen(e, element);
+
                 sequence.appendChild(element);
             }
             else {
@@ -52,7 +75,7 @@ final class XsdUtil {
                 if(!elementNamesProcessed.contains(nsName)) { // process an element first time only
                     Element element = new Element("xsd:element", XSD_NS_URI);
                     element.addAttribute(new Attribute("name", localName));
-                    element.addAttribute(new Attribute("type", type));
+                    
                     if(parent.getChildElements(localName, nsURI).size() > 1){
                         element.addAttribute(new Attribute("maxOccurs", "unbounded"));
                     }
@@ -60,7 +83,22 @@ final class XsdUtil {
                         element.addAttribute(new Attribute("minOccurs", "0"));
                         element.addAttribute(new Attribute("maxOccurs", "1"));
                     }
+                    // Attributes
+                    final int attrCount = e.getAttributeCount();
+                    if(attrCount > 0) { // has attributes: complex type without sequence!
+                        Element complexTypeCurrent = new Element("xsd:complexType", XSD_NS_URI);
+                        Element simpleContent = new Element("xsd:simpleContent", XSD_NS_URI);
+                        Element extension = new Element("xsd:extension", XSD_NS_URI);
+                        extension.addAttribute(new Attribute("base", type));
+                        processAttributes(e, extension);
+                        simpleContent.appendChild(extension);
+                        complexTypeCurrent.appendChild(simpleContent);
 
+                        element.appendChild(complexTypeCurrent);
+                    }
+                    else { // if no attributes, just put the type:
+                        element.addAttribute(new Attribute("type", type));
+                    }
                     sequence.appendChild(element);
                 }
             }
@@ -103,6 +141,9 @@ final class XsdUtil {
         }
 
         recurseGen(rootElement, rootElementXsd);
+
+        // Root element attributes
+        processAttributes(rootElement, rootElementXsd);
 
         // Display output:
         Serializer serializer = new Serializer(System.out, "UTF-8");
