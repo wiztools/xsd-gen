@@ -41,6 +41,7 @@ final class XsdUtil {
                 Element element = new Element("xsd:element", XSD_NS_URI);
                 element.addAttribute(new Attribute("name", localName));
                 recurseGen(e, element);
+                sequence.appendChild(element);
             }
             else {
                 final String cnt = e.getValue();
