@@ -11,6 +11,7 @@ import nu.xom.Element;
 import nu.xom.Elements;
 import nu.xom.ParsingException;
 import nu.xom.Serializer;
+import org.wiztools.commons.StringUtil;
 
 /**
  *
@@ -118,7 +119,7 @@ final class XsdUtil {
         // Setting targetNamespace:
         {
             final String nsPrefix = rootElement.getNamespacePrefix();
-            if(nsPrefix != null) {
+            if(!StringUtil.isStrEmpty(nsPrefix)) {
                 outRoot.addAttribute(new Attribute("targetNamespace", rootElement.getNamespaceURI()));
                 outRoot.addAttribute(new Attribute("elementFormDefault", "qualified"));
             }
