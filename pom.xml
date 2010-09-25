@@ -4,13 +4,13 @@
     <groupId>org.wiztools</groupId>
     <artifactId>xsd-gen</artifactId>
     <packaging>jar</packaging>
-    <version>0.1.0</version>
+    <version>0.1.1-SNAPSHOT</version>
     <name>xsd-gen</name>
     <url>http://xsd-gen.googlecode.com</url>
     <scm>
-        <connection>scm:svn:http://xsd-gen.googlecode.com/svn/tags/xsd-gen-0.1.0</connection>
-        <developerConnection>scm:svn:https://xsd-gen.googlecode.com/svn/tags/xsd-gen-0.1.0</developerConnection>
-        <url>scm:svn:https://xsd-gen.googlecode.com/svn/tags/xsd-gen-0.1.0</url>
+        <connection>scm:svn:http://xsd-gen.googlecode.com/svn/trunk/</connection>
+        <developerConnection>scm:svn:https://xsd-gen.googlecode.com/svn/trunk/</developerConnection>
+        <url>http://code.google.com/p/xsd-gen/source/browse/</url>
     </scm>
     <build>
         <plugins>
