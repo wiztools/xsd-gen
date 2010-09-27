@@ -15,6 +15,6 @@ public class XsdGenMain {
         }
 
         final File file = new File(arg[0]);
-        new XsdUtil().parse(file);
+        new XsdGen().parse(file).write(System.out);
     }
 }

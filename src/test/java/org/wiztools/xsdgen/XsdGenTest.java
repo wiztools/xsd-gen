@@ -12,9 +12,9 @@ import static org.junit.Assert.*;
  *
  * @author subWiz
  */
-public class XsdUtilTest {
+public class XsdGenTest {
 
-    public XsdUtilTest() {
+    public XsdGenTest() {
     }
 
     @BeforeClass
@@ -40,27 +40,27 @@ public class XsdUtilTest {
     public void testParse() throws Exception {
         System.out.println("parse");
         File file = new File("src/test/resources/tv.xml");
-        new XsdUtil().parse(file);
+        new XsdGen().parse(file).write(System.out);
     }
 
     @Test
     public void testParseRepeat() throws Exception {
         System.out.println("parse");
         File file = new File("src/test/resources/bathroom.xml");
-        new XsdUtil().parse(file);
+        new XsdGen().parse(file).write(System.out);
     }
 
     @Test
     public void testParseAttributes() throws Exception {
         System.out.println("parse");
         File file = new File("src/test/resources/attr.xml");
-        new XsdUtil().parse(file);
+        new XsdGen().parse(file).write(System.out);
     }
 
     @Test
     public void testParseNoNamespace() throws Exception {
         System.out.println("parse");
         File file = new File("src/test/resources/no-namespace.xml");
-        new XsdUtil().parse(file);
+        new XsdGen().parse(file).write(System.out);
     }
 }
