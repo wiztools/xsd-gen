@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.util.List;
+import org.wiztools.commons.Charsets;
 
 /**
  *
@@ -25,8 +26,8 @@ public class XsdGenMain {
         @Argument(value="f", alias="force", description="Force write output XSD even if it exists.")
         private boolean isForceWrite;
 
-        @Argument(value="c", alias="charset", description="Output charset.")
-        private String charset;
+        @Argument(value="e", alias="encoding", description="Output encoding (default is `UTF-8').")
+        private String encoding;
 
         @Argument(value="h", alias="help", description="Print usage help.")
         private boolean isHelp;
@@ -52,16 +53,13 @@ public class XsdGenMain {
             xsdGen = new XsdGen();
         }
 
-        // Now parse!
-        xsdGen.parse(xmlFile);
-
         // Charset
         final Charset charset;
-        if(cliParser.charset != null) {
-            charset = Charset.forName(cliParser.charset);
+        if(cliParser.encoding != null) {
+            charset = Charset.forName(cliParser.encoding);
         }
         else {
-            charset = Charset.defaultCharset();
+            charset = Charsets.UTF_8;
         }
 
         // Output file
@@ -77,6 +75,9 @@ public class XsdGenMain {
         else {
             os = System.out;
         }
+
+        // Now parse!
+        xsdGen.parse(xmlFile);
 
         // Write!
         xsdGen.write(os, charset);

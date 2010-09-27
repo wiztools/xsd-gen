@@ -13,6 +13,7 @@ import nu.xom.Element;
 import nu.xom.Elements;
 import nu.xom.ParsingException;
 import nu.xom.Serializer;
+import org.wiztools.commons.Charsets;
 import org.wiztools.commons.StringUtil;
 
 /**
@@ -70,7 +71,7 @@ public final class XsdGen {
             final String localName = e.getLocalName();
             final String nsURI = e.getNamespaceURI();
             final String nsPrefix = e.getNamespacePrefix();
-            final String nsName = (nsPrefix!=null?nsPrefix + ":": "") + localName;
+            final String nsName = e.getQualifiedName();
 
             if(!elementNamesProcessed.contains(nsName)) { // process an element first time only
                 if(e.getChildElements().size() > 0) { // Is complex type with children!
@@ -184,7 +185,7 @@ public final class XsdGen {
 
     public void write(final OutputStream os) throws IOException {
         if(doc == null) throw new IllegalStateException("Call parse() before calling this method!");
-        write(os, Charset.defaultCharset());
+        write(os, Charsets.UTF_8);
     }
 
     public void write(final OutputStream os, final Charset charset) throws IOException {
