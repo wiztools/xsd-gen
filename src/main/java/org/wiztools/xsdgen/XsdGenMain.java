@@ -16,19 +16,19 @@ import java.util.List;
 public class XsdGenMain {
 
     private static class ArgParse {
-        @Argument(value="prefix", alias="p", description="The namespace prefix for the xsd (default is `xsd').")
+        @Argument(value="p", alias="prefix", description="The namespace prefix for the xsd (default is `xsd').")
         private String xsdPrefix;
 
-        @Argument(value="output", alias="o", description="Write xsd to outfile instead of STDOUT.")
+        @Argument(value="o", alias="output", description="Write xsd to outfile instead of STDOUT.")
         private String xsdFile;
 
-        @Argument(value="force", alias="f", description="")
+        @Argument(value="f", alias="force", description="Force write output XSD even if it exists.")
         private boolean isForceWrite;
 
         @Argument(value="c", alias="charset", description="Output charset.")
         private String charset;
 
-        @Argument(value="help", alias="h", description="Print usage help.")
+        @Argument(value="h", alias="help", description="Print usage help.")
         private boolean isHelp;
     }
 
@@ -37,7 +37,6 @@ public class XsdGenMain {
         List<String> extras = Args.parse(cliParser, arg);
         if(extras.size() != 1
                 || cliParser.isHelp) {
-            System.err.println("Usage:");
             Args.usage(cliParser);
             System.exit(1);
         }
