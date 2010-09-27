@@ -40,35 +40,27 @@ public class XsdUtilTest {
     public void testParse() throws Exception {
         System.out.println("parse");
         File file = new File("src/test/resources/tv.xml");
-        XsdUtil.parse(file);
-        // TODO review the generated test code and remove the default call to fail.
-        // fail("The test case is a prototype.");
+        new XsdUtil().parse(file);
     }
 
     @Test
     public void testParseRepeat() throws Exception {
         System.out.println("parse");
         File file = new File("src/test/resources/bathroom.xml");
-        XsdUtil.parse(file);
-        // TODO review the generated test code and remove the default call to fail.
-        // fail("The test case is a prototype.");
+        new XsdUtil().parse(file);
     }
 
     @Test
     public void testParseAttributes() throws Exception {
         System.out.println("parse");
         File file = new File("src/test/resources/attr.xml");
-        XsdUtil.parse(file);
-        // TODO review the generated test code and remove the default call to fail.
-        // fail("The test case is a prototype.");
+        new XsdUtil().parse(file);
     }
 
     @Test
     public void testParseNoNamespace() throws Exception {
         System.out.println("parse");
         File file = new File("src/test/resources/no-namespace.xml");
-        XsdUtil.parse(file);
-        // TODO review the generated test code and remove the default call to fail.
-        // fail("The test case is a prototype.");
+        new XsdUtil().parse(file);
     }
 }
