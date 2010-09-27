@@ -76,10 +76,7 @@ public class XsdGenMain {
             os = System.out;
         }
 
-        // Now parse!
-        xsdGen.parse(xmlFile);
-
-        // Write!
-        xsdGen.write(os, charset);
+        // Parse & Write!
+        xsdGen.parse(xmlFile).write(os, charset);
     }
 }
