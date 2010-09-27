@@ -10,30 +10,30 @@ public final class TypeInferenceUtil {
     private TypeInferenceUtil() {}
 
     private static final Pattern P_URL = Pattern.compile("[a-z]+://.*");
-    private static final String XSD_URL = "xsd:anyURI";
+    private static final String XSD_URL = ":anyURI";
 
     private static final Pattern P_BOOLEAN = Pattern.compile("(true|false)");
-    private static final String XSD_BOOLEAN = "xsd:boolean";
+    private static final String XSD_BOOLEAN = ":boolean";
 
     private static final Pattern P_DATE = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
-    private static final String XSD_DATE = "xsd:date";
+    private static final String XSD_DATE = ":date";
 
     private static final Pattern P_TIME = Pattern.compile("\\d{2}:\\d{2}:\\d{2}\\.\\d{2}");
-    private static final String XSD_TIME = "xsd:time";
+    private static final String XSD_TIME = ":time";
 
     private static final Pattern P_DATE_TIME = Pattern.compile("\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{2}(-|\\+)\\d{2}:\\d{2}");
-    private static final String XSD_DATE_TIME = "xsd:dateTime";
+    private static final String XSD_DATE_TIME = ":dateTime";
 
     private static final Pattern P_INT = Pattern.compile("-?\\d+");
-    private static final String XSD_INT = "xsd:int";
+    private static final String XSD_INT = ":int";
 
     private static final Pattern P_DECIMAL = Pattern.compile("-?\\d+\\.\\d+");
-    private static final String XSD_DECIMAL = "xsd:decimal";
+    private static final String XSD_DECIMAL = ":decimal";
 
     private static final Pattern P_NORMALIZED_STRING = Pattern.compile("[^\\s]+");
-    private static final String XSD_NORMALIZED_STRING = "xsd:normalizedString";
+    private static final String XSD_NORMALIZED_STRING = ":normalizedString";
     
-    private static final String XSD_STRING = "xsd:string";
+    private static final String XSD_STRING = ":string";
 
     static String getTypeOfContent(final String content) {
         if(content == null) {

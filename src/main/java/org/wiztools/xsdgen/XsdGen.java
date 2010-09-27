@@ -48,7 +48,7 @@ public final class XsdGen {
 
             Element attrElement = new Element(XSD_PREFIX + ":attribute", XSD_NS_URI);
             attrElement.addAttribute(new Attribute("name", name));
-            attrElement.addAttribute(new Attribute("type", TypeInferenceUtil.getTypeOfContent(value)));
+            attrElement.addAttribute(new Attribute("type", XSD_PREFIX + TypeInferenceUtil.getTypeOfContent(value)));
             attrElement.addAttribute(new Attribute("use", "required"));
 
             outElement.appendChild(attrElement);
@@ -95,7 +95,7 @@ public final class XsdGen {
                     final String cnt = e.getValue();
                     final String eValue = cnt==null? null: cnt.trim();
 
-                    final String type = TypeInferenceUtil.getTypeOfContent(eValue);
+                    final String type = XSD_PREFIX + TypeInferenceUtil.getTypeOfContent(eValue);
 
                     Element element = new Element(XSD_PREFIX + ":element", XSD_NS_URI);
                     element.addAttribute(new Attribute("name", localName));
