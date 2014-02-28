@@ -143,7 +143,7 @@ public final class XsdGen {
         // Setting targetNamespace:
         {
             final String nsPrefix = rootElement.getNamespacePrefix();
-            if(!StringUtil.isStrEmpty(nsPrefix)) {
+            if(StringUtil.isNotEmpty(nsPrefix)) {
                 outRoot.addAttribute(new Attribute("targetNamespace", rootElement.getNamespaceURI()));
                 outRoot.addAttribute(new Attribute("elementFormDefault", "qualified"));
             }

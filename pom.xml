@@ -6,7 +6,7 @@
     <packaging>jar</packaging>
     <version>0.2.1-SNAPSHOT</version>
     <name>xsd-gen</name>
-    <url>http://xsd-gen.googlecode.com</url>
+    <url>https://github.com/wiztools/xsd-gen</url>
     <scm>
         <connection>scm:git:https://github.com/wiztools/xsd-gen.git</connection>
         <developerConnection>scm:git:https://github.com/wiztools/xsd-gen.git</developerConnection>
@@ -56,7 +56,7 @@
         <dependency>
             <groupId>org.wiztools.commons</groupId>
             <artifactId>wiztools-commons-lib</artifactId>
-            <version>0.2.0</version>
+            <version>0.3.0</version>
         </dependency>
         <dependency>
             <groupId>xom</groupId>
