@@ -8,9 +8,9 @@
     <name>xsd-gen</name>
     <url>http://xsd-gen.googlecode.com</url>
     <scm>
-        <connection>scm:svn:http://xsd-gen.googlecode.com/svn/trunk/</connection>
-        <developerConnection>scm:svn:https://xsd-gen.googlecode.com/svn/trunk/</developerConnection>
-        <url>http://code.google.com/p/xsd-gen/source/browse/</url>
+        <connection>scm:git:https://github.com/wiztools/xsd-gen.git</connection>
+        <developerConnection>scm:git:https://github.com/wiztools/xsd-gen.git</developerConnection>
+        <url>https://github.com/wiztools/xsd-gen</url>
     </scm>
     <build>
         <plugins>
@@ -55,13 +55,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <configuration>
-                    <tagBase>https://xsd-gen.googlecode.com/svn/tags</tagBase>
-                </configuration>
             </plugin>
         </plugins>
     </build>
