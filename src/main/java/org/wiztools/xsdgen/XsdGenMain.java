@@ -2,13 +2,14 @@ package org.wiztools.xsdgen;
 
 import com.sampullara.cli.Args;
 import com.sampullara.cli.Argument;
+import org.wiztools.commons.Charsets;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.util.List;
-import org.wiztools.commons.Charsets;
 
 /**
  *
