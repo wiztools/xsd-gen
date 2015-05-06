@@ -27,9 +27,7 @@ public final class XsdGen {
      * Constructs new {@code XsdGen} with defaults settings.
      */
     public XsdGen() {
-        final XsdConfig config = new XsdConfig();
-        xsdPrefix = config.getXsdPrefix();
-        enableMaxOccursOnce = config.isEnableMaxOccursOnce();
+        this(new XsdConfig());
     }
 
     /**
