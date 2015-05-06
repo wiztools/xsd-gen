@@ -46,13 +46,12 @@ public class XsdGenMain {
         final File xmlFile = new File(extras.get(0));
 
         // XSD prefix
-        final XsdGen xsdGen;
+        
+        XsdConfig config = new XsdConfig();
         if(cliParser.xsdPrefix != null) {
-            xsdGen = new XsdGen(cliParser.xsdPrefix,false);
+            config.setXsdPrefix(cliParser.xsdPrefix);
         }
-        else {
-            xsdGen = new XsdGen();
-        }
+        final XsdGen xsdGen = new XsdGen(config);
 
         // Charset
         final Charset charset;

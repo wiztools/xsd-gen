@@ -17,35 +17,29 @@ import java.util.Set;
 public final class XsdGen {
 
     private static final String XSD_NS_URI = "http://www.w3.org/2001/XMLSchema";
-    private static final boolean MAX_OCCURS_ACTIVATED = false;
-    private static final String XSD_PREFIX = "xsd"; // default XSD Prefix
 
     private final String xsdPrefix;
-    private final boolean maxOccursActivated;
+    private final boolean enableMaxOccursOnce;
 
     private Document doc = null; // populated after the parse method is called!
 
     /**
-     * Constructs new {@code XsdGen} with defaults settings :<ol>
-     * <li>Xsd prefix set as {@link #XSD_PREFIX}</li>
-     * <li><i>MaxOccurs activation</i> flag set as  {@link #MAX_OCCURS_ACTIVATED}</li>
-     * </ol>
+     * Constructs new {@code XsdGen} with defaults settings.
      */
     public XsdGen() {
-        xsdPrefix = XSD_PREFIX;
-        maxOccursActivated = MAX_OCCURS_ACTIVATED;
+        final XsdConfig config = new XsdConfig();
+        xsdPrefix = config.getXsdPrefix();
+        enableMaxOccursOnce = config.isEnableMaxOccursOnce();
     }
 
     /**
      * Constructs new {@code XsdGen} with parameters :
      *
-     * @param prefix             the XSD prefix
-     * @param maxOccursActivated the {@code maxOccurs} activation flag, set to true to activate <i>maxOccurs</i> tag
-     *                           support
+     * @param config             the XSD configuration
      */
-    public XsdGen(final String prefix, boolean maxOccursActivated) {
-        xsdPrefix = prefix == null ? XSD_PREFIX : prefix;
-        this.maxOccursActivated = maxOccursActivated;
+    public XsdGen(XsdConfig config) {
+        xsdPrefix = config.getXsdPrefix();
+        this.enableMaxOccursOnce = config.isEnableMaxOccursOnce();
     }
 
 
@@ -124,7 +118,7 @@ public final class XsdGen {
             element.addAttribute(new Attribute("maxOccurs", "unbounded"));
         } else {
             element.addAttribute(new Attribute("minOccurs", "0"));
-            if (maxOccursActivated) element.addAttribute(new Attribute("maxOccurs", "1"));
+            if (enableMaxOccursOnce) element.addAttribute(new Attribute("maxOccurs", "1"));
         }
     }
 
