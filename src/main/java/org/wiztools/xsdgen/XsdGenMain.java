@@ -48,7 +48,7 @@ public class XsdGenMain {
         // XSD prefix
         final XsdGen xsdGen;
         if(cliParser.xsdPrefix != null) {
-            xsdGen = new XsdGen(cliParser.xsdPrefix);
+            xsdGen = new XsdGen(cliParser.xsdPrefix,false);
         }
         else {
             xsdGen = new XsdGen();
