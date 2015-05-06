@@ -72,7 +72,7 @@ public final class XsdGen {
         parentOutElement.appendChild(complexType);
 
         Elements children = parent.getChildElements();
-        final Set<String> elementNamesProcessed = new HashSet<String>();
+        final Set<String> elementNamesProcessed = new HashSet<>();
         for (int i = 0; i < children.size(); i++) {
             Element e = children.get(i);
             final String localName = e.getLocalName();
