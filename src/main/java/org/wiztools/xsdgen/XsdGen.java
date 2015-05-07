@@ -122,8 +122,8 @@ public final class XsdGen {
 
     private Document getDocument(File file) throws ParsingException, IOException {
         Builder parser = new Builder();
-        Document doc = parser.build(file);
-        final Element rootElement = doc.getRootElement();
+        Document d = parser.build(file);
+        final Element rootElement = d.getRootElement();
 
         // output Document
         Element outRoot = new Element(xsdPrefix + ":schema", XSD_NS_URI);
