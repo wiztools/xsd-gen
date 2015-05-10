@@ -124,10 +124,6 @@ public final class XsdGen {
             if (enableMaxOccursOnce) element.addAttribute(new Attribute("maxOccurs", "1"));
         }
     }
-    
-    private Document getDocument(File file) throws ParsingException, IOException {
-        return getDocument(new FileInputStream(file));
-    }
 
     private Document getDocument(InputStream is) throws ParsingException, IOException {
         try {
@@ -167,13 +163,7 @@ public final class XsdGen {
     }
 
     public XsdGen parse(File file) throws IOException, ParseException {
-        try {
-            doc = getDocument(file);
-            return this;
-        }
-        catch (ParsingException ex) {
-            throw new ParseException(ex);
-        }
+        return parse(new FileInputStream(file));
     }
     
     public XsdGen parse(InputStream is) throws IOException, ParseException {
