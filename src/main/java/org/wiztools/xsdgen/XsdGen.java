@@ -5,7 +5,9 @@ import org.wiztools.commons.Charsets;
 import org.wiztools.commons.StringUtil;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.util.HashSet;
@@ -79,7 +81,8 @@ public final class XsdGen {
                     recurseGen(e, element); // recurse into children:
                     sequence.appendChild(element);
 
-                } else {
+                }
+                else {
                     final String cnt = e.getValue();
                     final String eValue = cnt == null ? null : cnt.trim();
                     final String type = xsdPrefix + TypeInferenceUtil.getTypeOfContent(eValue);
@@ -100,7 +103,8 @@ public final class XsdGen {
                         simpleContent.appendChild(extension);
                         complexTypeCurrent.appendChild(simpleContent);
                         element.appendChild(complexTypeCurrent);
-                    } else { // if no attributes, just put the type:
+                    }
+                    else { // if no attributes, just put the type:
                         element.addAttribute(new Attribute("type", type));
                     }
                     sequence.appendChild(element);
@@ -114,49 +118,70 @@ public final class XsdGen {
                                    final String localName, final String nsURI) {
         if (parent.getChildElements(localName, nsURI).size() > 1) {
             element.addAttribute(new Attribute("maxOccurs", "unbounded"));
-        } else {
+        }
+        else {
             element.addAttribute(new Attribute("minOccurs", "0"));
             if (enableMaxOccursOnce) element.addAttribute(new Attribute("maxOccurs", "1"));
         }
     }
-
+    
     private Document getDocument(File file) throws ParsingException, IOException {
-        Builder parser = new Builder();
-        Document d = parser.build(file);
-        final Element rootElement = d.getRootElement();
+        return getDocument(new FileInputStream(file));
+    }
 
-        // output Document
-        Element outRoot = new Element(xsdPrefix + ":schema", XSD_NS_URI);
-        Document outDoc = new Document(outRoot);
+    private Document getDocument(InputStream is) throws ParsingException, IOException {
+        try {
+            Builder parser = new Builder();
+            Document d = parser.build(is);
+            final Element rootElement = d.getRootElement();
 
-        // setting targetNamespace
-        final String nsPrefix = rootElement.getNamespacePrefix();
-        final boolean hasXmlns = rootElement.getNamespaceDeclarationCount() > 0;
-        if (hasXmlns || StringUtil.isNotEmpty(nsPrefix)) {
-            outRoot.addAttribute(new Attribute("targetNamespace", rootElement.getNamespaceURI()));
-            outRoot.addAttribute(new Attribute("elementFormDefault", "qualified"));
+            // output Document
+            Element outRoot = new Element(xsdPrefix + ":schema", XSD_NS_URI);
+            Document outDoc = new Document(outRoot);
+
+            // setting targetNamespace
+            final String nsPrefix = rootElement.getNamespacePrefix();
+            final boolean hasXmlns = rootElement.getNamespaceDeclarationCount() > 0;
+            if (hasXmlns || StringUtil.isNotEmpty(nsPrefix)) {
+                outRoot.addAttribute(new Attribute("targetNamespace", rootElement.getNamespaceURI()));
+                outRoot.addAttribute(new Attribute("elementFormDefault", "qualified"));
+            }
+
+            // adding all other namespace attributes
+            for (int i = 0; i < rootElement.getNamespaceDeclarationCount(); i++) {
+                final String nsPrefix2 = rootElement.getNamespacePrefix(i);
+                final String nsURI = rootElement.getNamespaceURI(nsPrefix2);
+                outRoot.addNamespaceDeclaration(nsPrefix, nsURI);
+            }
+
+            // adding the root element
+            Element rootElementXsd = new Element(xsdPrefix + ":element", XSD_NS_URI);
+            rootElementXsd.addAttribute(new Attribute("name", rootElement.getLocalName()));
+            outRoot.appendChild(rootElementXsd);
+            recurseGen(rootElement, rootElementXsd);
+            return outDoc;
         }
-
-        // adding all other namespace attributes
-        for (int i = 0; i < rootElement.getNamespaceDeclarationCount(); i++) {
-            final String nsPrefix2 = rootElement.getNamespacePrefix(i);
-            final String nsURI = rootElement.getNamespaceURI(nsPrefix2);
-            outRoot.addNamespaceDeclaration(nsPrefix, nsURI);
+        finally {
+            if(is != null) {is.close();}
         }
-
-        // adding the root element
-        Element rootElementXsd = new Element(xsdPrefix + ":element", XSD_NS_URI);
-        rootElementXsd.addAttribute(new Attribute("name", rootElement.getLocalName()));
-        outRoot.appendChild(rootElementXsd);
-        recurseGen(rootElement, rootElementXsd);
-        return outDoc;
     }
 
     public XsdGen parse(File file) throws IOException, ParseException {
         try {
             doc = getDocument(file);
             return this;
-        } catch (ParsingException ex) {
+        }
+        catch (ParsingException ex) {
+            throw new ParseException(ex);
+        }
+    }
+    
+    public XsdGen parse(InputStream is) throws IOException, ParseException {
+        try {
+            doc = getDocument(is);
+            return this;
+        }
+        catch (ParsingException ex) {
             throw new ParseException(ex);
         }
     }
