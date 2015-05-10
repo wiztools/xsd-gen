@@ -10,33 +10,33 @@ public final class TypeInferenceUtil {
     private TypeInferenceUtil() {}
 
     private static final Pattern P_URL = Pattern.compile("[a-z]+://.*");
-    private static final String XSD_URL = ":anyURI";
+    public static final String XSD_URL = ":anyURI";
 
     private static final Pattern P_BOOLEAN = Pattern.compile("(true|false)");
-    private static final String XSD_BOOLEAN = ":boolean";
+    public static final String XSD_BOOLEAN = ":boolean";
 
     private static final Pattern P_DATE = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
-    private static final String XSD_DATE = ":date";
+    public static final String XSD_DATE = ":date";
 
     private static final Pattern P_TIME = Pattern.compile("\\d{2}:\\d{2}:\\d{2}\\.\\d{2}");
-    private static final String XSD_TIME = ":time";
+    public static final String XSD_TIME = ":time";
 
     private static final Pattern P_DATE_TIME = Pattern.compile("^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$");
-    private static final String XSD_DATE_TIME = ":dateTime";
+    public static final String XSD_DATE_TIME = ":dateTime";
 
     private static final Pattern P_INT = Pattern.compile("-?\\d{1,9}");
-    private static final String XSD_INT = ":int";
+    public static final String XSD_INT = ":int";
 
     private static final Pattern P_LONG = Pattern.compile("-?\\d+");
-    private static final String XSD_LONG = ":long";
+    public static final String XSD_LONG = ":long";
 
     private static final Pattern P_DECIMAL = Pattern.compile("-?\\d+\\.\\d+");
-    private static final String XSD_DECIMAL = ":decimal";
+    public static final String XSD_DECIMAL = ":decimal";
 
     private static final Pattern P_NORMALIZED_STRING = Pattern.compile("[^\\s]+");
-    private static final String XSD_NORMALIZED_STRING = ":normalizedString";
+    public static final String XSD_NORMALIZED_STRING = ":normalizedString";
 
-    private static final String XSD_STRING = ":string";
+    public static final String XSD_STRING = ":string";
 
     static String getTypeOfContent(final String content) {
         if(content == null) {

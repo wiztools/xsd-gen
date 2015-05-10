@@ -54,7 +54,7 @@ public class TypeInferenceUtilTest {
     public void testGetTypeOfContentDateTime() {
         System.out.println("getTypeOfContent");
         String content = "2000-01-01T12:34:56Z";
-        String expResult = ":dateTime";
+        String expResult = TypeInferenceUtil.XSD_DATE_TIME;
         String result = TypeInferenceUtil.getTypeOfContent(content);
         assertEquals(expResult, result);
     }
