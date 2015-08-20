@@ -9,8 +9,6 @@ dependencies {
 		'com.google.code.cli-parser:cli:7'
 	compile('xom:xom:1.2.5') {
 		exclude module: ['xerces:xercesImpl', 'xalan:xalan', 'xml-apis:xml-apis']
-		// exclude module: 'xalan:xalan'
-		// exclude module: 'xml-apis:xml-apis'
 	}
 	testCompile group: 'junit', name: 'junit', version: '4.+'
 }
@@ -20,6 +18,8 @@ jar {
         attributes 'Main-Class': 'org.wiztools.xsdgen.XsdGenMain'
     }
 	from {
-	    configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+	    configurations.compile.collect {
+			it.isDirectory()? it: zipTree(it)
+		}
   	}
 }
