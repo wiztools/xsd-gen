@@ -3,3 +3,6 @@ build
 .gradle
 .idea/
 *.iml
+.project
+.classpath
+.settings/
