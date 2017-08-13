@@ -6,3 +6,5 @@ build
 .project
 .classpath
 .settings/
+bin/
+.vscode/
