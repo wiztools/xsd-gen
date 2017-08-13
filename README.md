@@ -14,7 +14,13 @@ To view additional command-line options:
 
 ## As Library
 
-To add as dependency in your Maven project:
+To add Gradle dependency:
+
+```groovy
+compile 'org.wiztools:xsd-gen:VERSION'
+```
+
+In Maven project:
 
 ```xml
 <dependency>
