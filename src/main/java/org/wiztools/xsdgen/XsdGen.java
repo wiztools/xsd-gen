@@ -147,7 +147,7 @@ public final class XsdGen {
             for (int i = 0; i < rootElement.getNamespaceDeclarationCount(); i++) {
                 final String nsPrefix2 = rootElement.getNamespacePrefix(i);
                 final String nsURI = rootElement.getNamespaceURI(nsPrefix2);
-                outRoot.addNamespaceDeclaration(nsPrefix, nsURI);
+                outRoot.addNamespaceDeclaration(nsPrefix2, nsURI);
             }
 
             // adding the root element
