@@ -14,21 +14,7 @@ To view additional command-line options:
 
 ## As Library
 
-To add Gradle dependency:
-
-```groovy
-compile 'org.wiztools:xsd-gen:VERSION'
-```
-
-In Maven project:
-
-```xml
-<dependency>
-  <groupId>org.wiztools</groupId>
-  <artifactId>xsd-gen</artifactId>
-  <version>VERSION</version>
-</dependency>
-```
+Latest versions of the library are available in the [jitpack repository](https://jitpack.io/#wiztools/xsd-gen/).
 
 Usage:
 
