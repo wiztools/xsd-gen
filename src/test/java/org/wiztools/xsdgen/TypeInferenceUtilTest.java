@@ -59,4 +59,16 @@ public class TypeInferenceUtilTest {
         assertEquals(expResult, result);
     }
     
+    /**
+     * Test of getTypeOfContent method, of class TypeInferenceUtil.
+     * Reported in Issue #12 ( https://github.com/wiztools/xsd-gen/issues/12 ).
+     */
+    @Test
+    public void testGetTypeOfContentDateTimeInvalid() {
+        System.out.println("getTypeOfContentDateTimeInvalid");
+        String content = "12121212";
+        String expResult = TypeInferenceUtil.XSD_INT;
+        String result = TypeInferenceUtil.getTypeOfContent(content);
+        assertEquals(expResult, result);
+    }
 }
