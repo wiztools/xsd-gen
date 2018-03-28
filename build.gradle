@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
 	compile 'org.wiztools.commons:wiztools-commons-lib:0.4.1',
-		'com.google.code.cli-parser:cli:7'
+		'com.github.spullara.cli-parser:cli-parser:1.1.2'
 	compile('xom:xom:1.2.5') {
 		exclude module: ['xerces:xercesImpl', 'xalan:xalan', 'xml-apis:xml-apis']
 	}

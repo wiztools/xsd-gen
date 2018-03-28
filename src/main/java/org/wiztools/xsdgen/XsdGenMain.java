@@ -24,7 +24,7 @@ public class XsdGenMain {
         @Argument(value="o", alias="output", description="Write xsd to outfile instead of STDOUT.")
         private String xsdFile;
 
-        @Argument(value="f", alias="force", description="Force write output XSD even if it exists.")
+        @Argument(value="f", alias="force", description="Overwrite output XSD if it exists.")
         private boolean isForceWrite;
 
         @Argument(value="e", alias="encoding", description="Output encoding (default is `UTF-8').")
