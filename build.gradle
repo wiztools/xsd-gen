@@ -6,6 +6,8 @@ apply plugin: 'java'
 apply plugin: 'distribution'
 
 mainClassName = 'org.wiztools.xsdgen.XsdGenMain'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
 	mavenCentral()
