@@ -22,7 +22,8 @@ public final class TypeInferenceUtil {
     public static final String XSD_TIME = ":time";
 
     // Pattern from: https://stackoverflow.com/questions/3143070/javascript-regex-iso-datetime
-    private static final Pattern P_DATE_TIME = Pattern.compile("^[+-]?\\d{4}(-[01]\\d(-[0-3]\\d(T[0-2]\\d:[0-5]\\d:?([0-5]\\d(\\.\\d+)?)?([+-][0-2]\\d:[0-5]\\d)?Z?)?)?)?$");
+    // Customized for #14: https://github.com/wiztools/xsd-gen/issues/14
+    private static final Pattern P_DATE_TIME = Pattern.compile("^[+-]?\\d{4}-[01]\\d-[0-3]\\d(T[0-2]\\d:[0-5]\\d:?([0-5]\\d(\\.\\d+)?)?([+-][0-2]\\d:[0-5]\\d)?Z?)?$");
     public static final String XSD_DATE_TIME = ":dateTime";
 
     private static final Pattern P_INT = Pattern.compile("-?\\d{1,9}");
