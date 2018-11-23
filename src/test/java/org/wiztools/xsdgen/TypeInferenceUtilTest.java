@@ -71,4 +71,16 @@ public class TypeInferenceUtilTest {
         String result = TypeInferenceUtil.getTypeOfContent(content);
         assertEquals(expResult, result);
     }
+
+    /**
+     * Reported in issue #14 ( https://github.com/wiztools/xsd-gen/issues/14 )
+     */
+    @Test
+    public void testFourDgtAsTime() {
+        System.out.println("testFourDgtAsTime");
+        String content = "2012";
+        String expResult = TypeInferenceUtil.XSD_INT;
+        String result = TypeInferenceUtil.getTypeOfContent(content);
+        assertEquals(expResult, result);
+    }
 }
