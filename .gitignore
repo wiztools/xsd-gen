@@ -8,3 +8,7 @@ build
 .settings/
 bin/
 .vscode/
+
+# snap
+stage
+parts
