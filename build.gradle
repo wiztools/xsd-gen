@@ -11,12 +11,13 @@ targetCompatibility = 1.8
 
 repositories {
 	mavenCentral()
+	maven { url 'https://jitpack.io' }
 }
 
 dependencies {
 	compile 'org.wiztools.commons:wiztools-commons-lib:0.4.1',
 		'com.github.spullara.cli-parser:cli-parser:1.1.2'
-	compile('xom:xom:1.2.5') {
+	compile('com.io7m.xom:xom:1.2.10') {
 		exclude module: ['xerces:xercesImpl', 'xalan:xalan', 'xml-apis:xml-apis']
 	}
 	testCompile group: 'junit', name: 'junit', version: '4.+'
