@@ -2,6 +2,19 @@
 
 Command-line tool written in Java for generating XSD from an XML. Can also be used as a library within your application.
 
+## Install
+
+Builds are available as [uber jar](https://github.com/wiztools/xsd-gen/releases).
+
+Mac users can install via homebrew:
+
+```
+brew tap wiztools/repo
+brew install xsd-gen
+```
+
+Once installed, `xsd-gen` is available in `PATH`.
+
 ## Running
 
 To generate schema:
