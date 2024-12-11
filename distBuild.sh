@@ -1,3 +1,3 @@
 #!/bin/sh
 
-gradle clean build fatJar assembleDist
+./gradlew clean build assembleDist
