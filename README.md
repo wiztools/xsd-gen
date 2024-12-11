@@ -19,11 +19,11 @@ Once installed, `xsd-gen` is available in `PATH`.
 
 To generate schema:
 
-    $ java -jar xsd-gen-fat-VERSION.jar /path/to/xml.xml > /path/to/my.xsd
+    $ java -jar xsd-gen-VERSION-fat.jar /path/to/xml.xml > /path/to/my.xsd
 
 To view additional command-line options:
 
-    $ java -jar xsd-gen-fat-VERSION.jar -h
+    $ java -jar xsd-gen-VERSION-fat.jar -h
 
 ## As Library
 
