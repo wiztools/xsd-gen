@@ -83,4 +83,20 @@ public class TypeInferenceUtilTest {
         String result = TypeInferenceUtil.getTypeOfContent(content);
         assertEquals(expResult, result);
     }
+
+    @Test
+    public void testNumberStartingWith0() {
+        String content = "0123456";
+        String expResult = TypeInferenceUtil.XSD_NORMALIZED_STRING;
+        String result = TypeInferenceUtil.getTypeOfContent(content);
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testSingleDigitInt() {
+        String content = "1";
+        String expResult = TypeInferenceUtil.XSD_INT;
+        String result = TypeInferenceUtil.getTypeOfContent(content);
+        assertEquals(expResult, result);
+    }
 }
