@@ -1,5 +1,5 @@
 name: xsd-gen
-version: '0.2.4' 
+version: '0.3.0' 
 summary: Tool to generate XSD from XML.
 description: |
   Tool tries to infer schema from XML file, and generates corresponding XSD.
@@ -8,16 +8,16 @@ confinement: devmode
 
 apps:
   xsd-gen:
-    command: java -jar $SNAP/xsd-gen-0.2.4/xsd-gen-0.2.4.jar
+    command: java -jar $SNAP/xsd-gen-0.3.0/xsd-gen-0.3.0-fat.jar
 
 parts:
   xsd-gen:
     plugin: gradle
     source: .
-    build: |
-      export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
-      ./gradlew fatJar
-    install: |
-      cp build/libs/xsd-gen-0.2.4.jar $SNAPCRAFT_PART_INSTALL/
+    # override-build: |
+    #   # export JAVA_HOME="/usr/lib/jvm/java-18-openjdk-amd64"
+    #   ./gradlew build
+    override-build: |
+      cp build/libs/xsd-gen-0.3.0-fat.jar $SNAPCRAFT_PART_INSTALL/
     build-packages:
-      - openjdk-8-jdk
+      - default-jdk
