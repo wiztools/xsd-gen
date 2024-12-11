@@ -26,10 +26,10 @@ public final class TypeInferenceUtil {
     private static final Pattern P_DATE_TIME = Pattern.compile("^[+-]?\\d{4}-[01]\\d-[0-3]\\d(T[0-2]\\d:[0-5]\\d:?([0-5]\\d(\\.\\d+)?)?([+-][0-2]\\d:[0-5]\\d)?Z?)?$");
     public static final String XSD_DATE_TIME = ":dateTime";
 
-    private static final Pattern P_INT = Pattern.compile("-?\\d{1,9}");
+    private static final Pattern P_INT = Pattern.compile("-?[1-9]\\d{0,8}");
     public static final String XSD_INT = ":int";
 
-    private static final Pattern P_LONG = Pattern.compile("-?\\d+");
+    private static final Pattern P_LONG = Pattern.compile("-?[1-9]\\d+");
     public static final String XSD_LONG = ":long";
 
     private static final Pattern P_DECIMAL = Pattern.compile("-?\\d+\\.\\d+");
