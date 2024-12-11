@@ -45,6 +45,7 @@ publishing {
 	}
 	publications {
 		gpr(MavenPublication) {
+			groupId 'org.wiztools'
 			from(components.java)
 		}
 	}
