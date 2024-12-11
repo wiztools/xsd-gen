@@ -14,11 +14,6 @@ java {
 	targetCompatibility = JavaVersion.VERSION_18
 }
 
-repositories {
-	mavenCentral()
-	maven { url 'https://jitpack.io' }
-}
-
 dependencies {
 	implementation 'org.wiztools.commons:wiztools-commons-lib:0.4.1',
 		'com.github.spullara.cli-parser:cli-parser:1.1.6'
