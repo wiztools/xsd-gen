@@ -3,15 +3,16 @@ plugins {
 	id 'application'
 	id 'com.gradleup.shadow' version '9.0.0-beta4'
 	id 'distribution'
-}
-
-application {
-	mainClass = 'org.wiztools.xsdgen.XsdGenMain'
+	id 'maven-publish'
 }
 
 java {
     sourceCompatibility = JavaVersion.VERSION_18
 	targetCompatibility = JavaVersion.VERSION_18
+}
+
+application {
+	mainClass = 'org.wiztools.xsdgen.XsdGenMain'
 }
 
 dependencies {
@@ -28,5 +29,23 @@ tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.Shadow
 	dependencies {
 		exclude(dependency('xerces:xercesImpl'))
 		exclude(dependency('xml-apis:xml-apis'))
+	}
+}
+
+publishing {
+	repositories {
+		maven {
+			name = "GitHubPackages"
+			url = uri("https://maven.pkg.github.com/wiztools/xsd-gen")
+			credentials {
+				username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+				password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+			}
+		}
+	}
+	publications {
+		gpr(MavenPublication) {
+			from(components.java)
+		}
 	}
 }
