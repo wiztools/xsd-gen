@@ -18,7 +18,7 @@ To view additional command-line options:
 
 ## As Library
 
-Latest versions of the library are available in the [jitpack repository](https://jitpack.io/#wiztools/xsd-gen/).
+Latest versions of the library are available in the [GitHub Packages](https://github.com/wiztools/xsd-gen/packages/2343174).
 
 Usage:
 
